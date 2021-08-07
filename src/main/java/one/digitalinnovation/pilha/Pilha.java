@@ -1,5 +1,7 @@
 package one.digitalinnovation.pilha;
 
+import one.digitalinnovation.noh.Noh;
+
 public class Pilha {
     private Noh refNohEntrada;
 
@@ -22,13 +24,13 @@ public class Pilha {
     public void empilhar(Noh novoNoh){
         Noh refAuxiliar = refNohEntrada;
         refNohEntrada = novoNoh;
-        refNohEntrada.setRefNoh(refAuxiliar);
+        refNohEntrada.setProximo(refAuxiliar);
     }
 
     public Noh desempilhar() {
         if (!this.estaVazia()) {
             Noh nohExcluido = refNohEntrada;
-            refNohEntrada = refNohEntrada.getRefNoh();
+            refNohEntrada = refNohEntrada.getProximo();
             return nohExcluido;
         } else {
             return null;
@@ -45,8 +47,8 @@ public class Pilha {
 
             while(true){
                 if(nohAuxiliar != null){
-                    stringRetorno += "[Nó{dado = "+ nohAuxiliar.getDado() + "}]\n";
-                    nohAuxiliar = nohAuxiliar.getRefNoh();
+                    stringRetorno += "[Nó{dado = "+ nohAuxiliar.getConteudo() + "}]\n";
+                    nohAuxiliar = nohAuxiliar.getProximo();
                 }else{
                     break;
                 }

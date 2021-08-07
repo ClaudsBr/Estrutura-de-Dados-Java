@@ -1,12 +1,14 @@
 package one.digitalinnovation.fila;
 
+import one.digitalinnovation.noh.Noh;
+
 public class Fila<T> {
 
     private Noh<T> refNoEntradaFila = null;
 
     public void enfileirar(T object){
         Noh novoNoh = new Noh(object);
-        novoNoh.setRefNoh(refNoEntradaFila);
+        novoNoh.setProximo(refNoEntradaFila);
         refNoEntradaFila = novoNoh;
     }
 
@@ -15,15 +17,15 @@ public class Fila<T> {
             Noh primeiroNoh = refNoEntradaFila;
             Noh noAuxiliar = refNoEntradaFila;
             while(true){
-                if(primeiroNoh.getRefNoh() != null) {
+                if(primeiroNoh.getProximo() != null) {
                     noAuxiliar = primeiroNoh;
-                    primeiroNoh = primeiroNoh.getRefNoh();
+                    primeiroNoh = primeiroNoh.getProximo();
                 }else{
-                    noAuxiliar.setRefNoh(null);
+                    noAuxiliar.setProximo(null);
                     break;
                 }
             }
-            return (T) primeiroNoh.getObject();
+            return (T) primeiroNoh.getConteudo();
         }
         return null;
     }
@@ -32,13 +34,13 @@ public class Fila<T> {
         if(!estaVazia()){
             Noh primeiroNo = refNoEntradaFila;
             while(true){
-                if(primeiroNo.getRefNoh() != null) {
-                    primeiroNo = primeiroNo.getRefNoh();
+                if(primeiroNo.getProximo() != null) {
+                    primeiroNo = primeiroNo.getProximo();
                 }else{
                     break;
                 }
             }
-            return (T) primeiroNo.getObject();
+            return (T) primeiroNo.getConteudo();
         }
         return null;
     }
@@ -54,9 +56,9 @@ public class Fila<T> {
 
         if(refNoEntradaFila != null){
             while(true){
-                stringRetorno += "[No{objeto="+ noAuxiliar.getObject() +"}]--->";
-                if(noAuxiliar.getRefNoh() != null){
-                    noAuxiliar = noAuxiliar.getRefNoh();
+                stringRetorno += "[No{objeto="+ noAuxiliar.getConteudo() +"}]--->";
+                if(noAuxiliar.getProximo() != null){
+                    noAuxiliar = noAuxiliar.getProximo();
                 }else{
                     stringRetorno += "null";
                     break;

@@ -1,6 +1,6 @@
 package one.digitalinnovation.noh;
 
-public class Main {
+public class MainNoh {
     public static void main(String[] args) {
         Noh<String> noh1 = new Noh<>("Conteúdo nó1");
         Noh<String> noh2 = new Noh<>("Conteudo nó2");

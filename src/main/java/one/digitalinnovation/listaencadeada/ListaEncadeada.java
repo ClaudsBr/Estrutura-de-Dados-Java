@@ -1,5 +1,7 @@
 package one.digitalinnovation.listaencadeada;
 
+import one.digitalinnovation.noh.Noh;
+
 public class ListaEncadeada<T> {
 
     Noh<T> refEntrada;
@@ -15,8 +17,8 @@ public class ListaEncadeada<T> {
         while(true){
             if(refAuxiliar != null){
                 tamanhoLista++;
-                if(refAuxiliar.getProximoNoh()!= null){
-                    refAuxiliar = refAuxiliar.getProximoNoh();
+                if(refAuxiliar.getProximo()!= null){
+                    refAuxiliar = refAuxiliar.getProximo();
                 }else {
                     break;
                 }
@@ -41,9 +43,9 @@ public class ListaEncadeada<T> {
 
         Noh<T> nohAuxiliar = refEntrada;
         for(int i =0; i < this.tamanho()-1;i++ ){
-            nohAuxiliar = nohAuxiliar.getProximoNoh();
+            nohAuxiliar = nohAuxiliar.getProximo();
         }
-        nohAuxiliar.setProximoNoh(novoNoh);
+        nohAuxiliar.setProximo(novoNoh);
     }
 
     private Noh<T> getNoh(int index){
@@ -55,7 +57,7 @@ public class ListaEncadeada<T> {
 
         for(int i = 0; i<= index;i++){
             nohRetorno = nohAuxiliar;
-            nohAuxiliar = nohAuxiliar.getProximoNoh();
+            nohAuxiliar = nohAuxiliar.getProximo();
         }
         return nohRetorno;
     }
@@ -73,12 +75,12 @@ public class ListaEncadeada<T> {
     public T remover(int index){
         Noh<T> nohPivo = this.getNoh(index);
         if(index == 0){
-            refEntrada = nohPivo.getProximoNoh();
+            refEntrada = nohPivo.getProximo();
             return nohPivo.getConteudo();
         }
 
         Noh<T> nohAnterior = getNoh(index -1);
-        nohAnterior.setProximoNoh(nohPivo.getProximoNoh());
+        nohAnterior.setProximo(nohPivo.getProximo());
         return nohPivo.getConteudo();
     }
 
@@ -88,7 +90,7 @@ public class ListaEncadeada<T> {
         Noh<T> nohAuxiliar = refEntrada;
         for(int i = 0; i < this.tamanho();i++){
             retorno += "Noh{conteúdo = " + nohAuxiliar.getConteudo() + "} --> ";
-            nohAuxiliar = nohAuxiliar.getProximoNoh();
+            nohAuxiliar = nohAuxiliar.getProximo();
         }
         retorno += null;
         return retorno;
