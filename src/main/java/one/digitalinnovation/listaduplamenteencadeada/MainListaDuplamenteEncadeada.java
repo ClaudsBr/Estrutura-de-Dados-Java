@@ -1,4 +1,4 @@
-package one.digitalinnovation.nohduplo;
+package one.digitalinnovation.listaduplamenteencadeada;
 
 public class MainListaDuplamenteEncadeada {
 

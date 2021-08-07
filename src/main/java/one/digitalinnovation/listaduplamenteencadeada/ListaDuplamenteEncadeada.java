@@ -1,4 +1,6 @@
-package one.digitalinnovation.nohduplo;
+package one.digitalinnovation.listaduplamenteencadeada;
+
+import one.digitalinnovation.nohduplo.NohDuplo;
 
 public class ListaDuplamenteEncadeada<T> {
 
